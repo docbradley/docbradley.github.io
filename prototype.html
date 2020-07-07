@@ -359,20 +359,20 @@ function setUpColors() {
 // extracting binNames and clusterNames
 function formatData(data){
 
-    var clusterNames = d3.keys(data[0]).filter(function(key) {return key !== 'year'; });
+    var clusterNames = d3.keys(data[0]).filter(function(key) {return key !== 'stars'; });
     var binNames = [];
 
     var blockData = [];
 
     for(var i = 0; i < data.length; i++){
         var y = 0;
-        binNames.push(data[i].year);
+        binNames.push(data[i].stars);
         for(var j = 0; j < clusterNames.length; j++){
             var height = parseFloat(data[i][clusterNames[j]]);
             var block = {'y0': parseFloat(y),
                 'y1': parseFloat(y) + parseFloat(height),
                 'height': height,
-                'x': data[i].year,
+                'x': data[i].stars,
                 'cluster': clusterNames[j]};
             y += parseFloat(data[i][clusterNames[j]]);
             blockData.push(block);
